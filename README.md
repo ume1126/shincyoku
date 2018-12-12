@@ -1,2 +1,2 @@
-# shinryoku
-shinryoku_app ver.2
+# shincyoku
+shincyoku_app ver.2
