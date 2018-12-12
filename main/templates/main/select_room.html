@@ -1,0 +1,56 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}select_room{% endblock title %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+  <div class="btn">
+    <a href="{% url 'main:create_room' %}">
+      部屋を作る
+    </a>
+  </div>
+{% endif %}
+
+<h1>どこでもくもくしますか</h1>
+<img src="{% static 'img/hedder.png' %}">
+<br>
+loginuser: {{ user.username }}<br>
+
+
+{% if request.user.is_authenticated %}
+  <a href="/user/logout/">ログアウト</a><br>
+{% else %}
+  <a href="/user/login/">ログイン</a><br>
+{% endif %}
+
+
+<br>
+<hr>
+<hr>
+
+
+{% for post in rooms %}
+<div class="box link">
+  <p>id: {{ post.id }}</p>
+  <p>author: {{ post.author }}</p>
+  <p>room: {{ post.title }} in {{ post.place }}</p>
+  <p>テーマ: {{ post.theme }}</p>
+  <div class="btn">
+    <a href="{% url 'main:room' post.id %}"></a>
+  </div>
+</div>
+{% if user.id == post.author.id %}
+<div class="delete_btn">
+  <a href="{% url 'main:delete_room' post.id %}">削除する</a>
+</div>
+{% endif %}
+
+{% endfor %}
+
+
+
+
+{% endblock %}

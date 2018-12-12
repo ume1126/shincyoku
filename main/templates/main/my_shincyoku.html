@@ -1,0 +1,61 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}my_shincyoku{% endblock title %}
+
+{% block content %}
+■今ログインしているのは{{ user.username }}さん<br>
+<br>
+
+<h1>{{ shincyoku.author }}さんのシンチョク</h1>
+<img src="{% static 'img/hedder.png' %}"><br>
+<hr>
+ナウ進捗<br>
+<h4>『{{ now_shincyoku }}』</h4><br>
+…………{{ now_shincyoku.progress }}%
+
+<br>
+<br>
+<form action="" method="POST">
+  {% csrf_token %}
+  fight:{{ shincyoku.fight }}<br>
+  <button class="btn btn-primary">応援してますbutton</button>
+</form>
+
+
+
+<br>
+<br>
+<br>
+
+<br>
+▼履歴
+<hr>
+{% for hoge in my_shincyoku %}
+{{ hoge.create_date }}〜: 『{{ hoge.snck }}』<br>
+進捗…… {{ hoge.progress }}<br>
+in: {{ hoge.room.place }}　　theme: {{ hoge.room.theme }}<br>
+
+{% if request.user.id == shincyoku.author.id %}
+  <a href="{% url 'main:edit_shincyoku' shincyoku.id %}">
+    <button class="btn">編集ボタン</button>
+  </a>
+{% endif %}
+
+<hr>
+{% endfor %}
+
+
+
+
+
+<hr>
+
+
+
+<br>
+<br>
+<br>
+
+{% endblock %}

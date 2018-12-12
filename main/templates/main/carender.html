@@ -1,0 +1,20 @@
+{% extends "main/base.html" %}
+
+{% block title %}カレンダー{% endblock title %}
+
+{% block content %}
+
+<h1>カレンダー</h1>
+<hr>
+
+    <form method="post" action="">
+      {% csrf_token %}
+      {{ form.media }}
+      {{ form.as_p }}
+      <input type="submit">
+    </form>
+
+
+<hr>
+
+{% endblock %}

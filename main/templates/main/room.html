@@ -1,0 +1,64 @@
+{% extends "main/base.html" %}
+
+{% block title %}進捗どう？w{% endblock title %}
+
+{% block content %}
+
+<div class="box">
+  <p>id: {{ room.id }}</p>
+  <p>author: {{ room.author }}</p>
+  <p>room: {{ room.title }} in {{ room.place }}</p>
+  <p>テーマ: {{ room.theme }}</p>
+<hr>
+
+<div>
+  <div class="title">
+    <h3>進捗を言いましょう</h3>
+
+    {% if request.user.is_authenticated %}
+    <div class="btn btn-info">
+      <a href="{% url 'main:create_shincyoku' room.id %}">進捗を書く</a>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- shincyokus title: {{ shincyokus }} -->
+
+
+
+  <hr>
+  <div class="container">
+    <div class="row box_center">
+
+    {% for shincyoku in shincyokus %}
+      <div class="col-sm-3 box24">
+        <a href="{% url 'main:shincyoku' shincyoku.id %}">author: {{ shincyoku.author }}</a><br>
+        <p>
+          <b>やること: {{ shincyoku.snck }}</b><br>
+          進捗: {{ shincyoku.progress }}％<br>
+        </p>
+        ―――――――――<br>
+        shincyoku_id: {{ shincyoku.id }}
+        {% if request.user.id == room.author.id or request.user.id == shincyoku.author.id %}
+        <a href="{% url 'main:delete_shincyoku' room.id shincyoku.id  %}">削除ボタン</a>
+        {% endif %}
+
+        <form action="{% url 'main:countup' shincyoku.id %}" method="POST">
+          {% csrf_token %}
+          fight:{{ shincyoku.fight }}<br>
+          <button class="btn btn-primary">応援してますbutton</button>
+        </form>
+
+        <br>
+        ―――――――――<br>
+        <hr>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+{% endblock %}

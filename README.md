@@ -1,2 +1,13 @@
-# shincyoku
-shincyoku_app ver.2
+# README
+
+―――――――――――――――――――  
+■last update...  
+  
+181210 ume  
+―――――――――――――――――――  
+
+うめさんが頑張るやつです。  
+今の課題は、ツイッターのアイコンを取得する方法……  
+
+
+※settings.pyのsocial keyを変更してください。  

@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+
+{% block title %}テスト{% endblock title %}
+
+{% block content %}
+
+<h1>テスト</h1>
+
+テストページです。
+<hr>
+formを表示させたいんだな。<br>
+
+<form method="GET" action="">
+  form:<br>
+  {{ form }}
+  <hr>
+  select:<br>
+  {{ select }}
+  <hr>
+  hoge:<br>
+  {{ hoge }}
+</form>
+
+
+<hr>
+
+{% endblock %}

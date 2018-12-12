@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+
+{% block title %}進捗どう？w{% endblock title %}
+
+{% block content %}
+
+<p>{{ shincyoku.author }}さん</p>
+<h1>{{ shincyoku.title }}</h1>
+
+<p>{{ shincyoku.text|linebreaksbr }}</p>
+<br>
+
+  <form action="" method="GET"><!-- GETだからURLに？がついちゃう！ -->
+    fight:{{ shincyoku.fight }}<br>
+    <button class="btn btn-primary">応援してますbutton</button>
+    <!-- <input type="submit" value="送信"> どっちでもいくよ！-->
+    スタンプを押すところをつけたいんだな
+    <!-- ボタンを押すとスクロールが上に戻ります！ -->
+  </form>
+
+<hr>
+
+{% endblock %}

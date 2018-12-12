@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block title %}進捗どうですか{% endblock title %}
+
+{% block content %}
+
+<div class="btn btn-primary">あ
+</div>→宣言ページへ飛ぶ
+<h1>もくもく会 in カフェ</h1>
+<img src="{% static 'img/camera.png' %}">
+<h6>※もう部屋選択済みと過程します</h6>
+
+<a href="/user/login/">ログインする</a><br>
+loginuser: {{ user.username }}
+
+<hr>
+
+
+
+
+
+{% endblock %}

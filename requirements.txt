@@ -1,0 +1,4 @@
+django
+django-bootstrap-datepicker-plus
+django-bootstrap4
+social-auth-app-django

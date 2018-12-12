@@ -1,0 +1,34 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}進捗どうですか{% endblock title %}
+
+{% block content %}
+<div class="btn btn-primary">
+  <a href="{% url 'main:create_shincyoku' %}">宣言する</a>
+</div>→宣言ページへ飛ぶ
+<h1>もくもく会 in カフェ</h1>
+<img src="{% static 'img/camera.png' %}">
+<h6>※もう部屋選択済みと過程します</h6>
+
+
+loginuser: {{ user.username }}
+
+<hr>
+
+
+{% for post in shincyoku %}
+  <div>
+      <p>START: {{ post.start_date }} {{ post.start_time }}〜</p>
+      <h2><a href="{% url 'main:shincyoku' post.id %}">{{ post.title }}</a></h2>
+      <p>進捗：{{ post.progress }}％</p>
+      <!-- <p>{{ post.text|linebreaksbr }}</p> -->
+      <p>{{ post.summary }}……</p>
+      <p><font color="red">〆: {{ post.end_date }} {{ post.end_time }}〜</font></p>
+      <hr>
+  </div>
+{% endfor %}
+
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+
+{% block title %}edit_shincyoku{% endblock title %}
+
+{% block content %}
+
+<p>{{ shincyoku.author }}さん</p>
+<h1>{{ shincyoku.snck }}</h1>
+<p>{{ shincyoku.progress }}%</p>
+<br>
+
+
+<div>
+  <h1>編集画面</h1><br>
+
+  <form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+
+</div>
+
+
+
+
+<hr>
+
+{% endblock %}
